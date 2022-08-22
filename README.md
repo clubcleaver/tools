@@ -1,7 +1,7 @@
 # TOOLS
 Handy Tools and Scripts
 
--------------------
+
 ##envset.sh
 -------------------
 ### Persistent alias script for Commands and Directory Paths

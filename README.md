@@ -1,2 +1,2 @@
-# tools
-Handy tools and scripts
+# TOOLS
+Handy Tools and Scripts

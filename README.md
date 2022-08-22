@@ -3,7 +3,7 @@ Handy Tools and Scripts
 
 
 -------------------
-setenv.sh
+envset.sh
 -------------------
 # Persistent alias script for Commands and Directory Paths
 I created this script to create aliases when in labs to reduce typing ...

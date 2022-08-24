@@ -3,7 +3,6 @@ Handy Tools and Scripts
 
 
 ## envset.sh
-%%%%%%%%%%%%
 ### Persistent alias script for Commands and Directory Paths
 I created this script to create aliases when in labs to reduce typing ...
 
@@ -20,7 +19,6 @@ the changes made will be limited to the login Shell  --  any sub shells spawned 
 ==================XXXXXX====================
 
 ## linum
-%%%%%%%%%
 script runs a series of commands for manual enumeration and self identification.
 useful for postexploit enumeration when you dont know what you are looking for.
 ==================XXXXXX====================

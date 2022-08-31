@@ -14,7 +14,8 @@ apt -y install gcc-multilib
 apt -y install mousepad
 apt -y install flameshot
 apt -y install proftpd
-apt -y install bloodhound
+apt -y install rlwrap
+# apt -y install bloodhound
 # bloodhound uses 'neo4j' database to operate 
 # to setup neo4j use ' neo4j console '
 # comment the following section to setup manually

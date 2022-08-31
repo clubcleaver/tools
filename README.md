@@ -23,7 +23,7 @@ script runs a series of commands for manual enumeration and self identification.
 useful for postexploit enumeration when you dont know what you are looking for.
 ==================XXXXXX====================
 
-# Kali Setup
+## Kali Setup
 just some basic packages i need setup in kali
 the directory setup is hardcoded in the script ... i do it for my oscp labs ... will change in time to prompted version
 ==================XXXXXX====================

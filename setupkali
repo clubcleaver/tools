@@ -1,0 +1,52 @@
+#!/bin/bash
+# Needs work ... error handling and confirmations
+# kali setup and required files
+# to setup KALI linux to be useable
+# needs to run with sudo permissions
+# use format 'sudo ./script.sh
+# recommendations of Rana Nadir @clubcleaver
+echo -e "needs SUDO  priveleges ... Please enter your password:\n"
+sudo apt update
+apt -y full-upgrade
+apt -y install locate
+apt -y install golang-go
+apt -y install gcc-multilib 
+apt -y install mousepad
+apt -y install flameshot
+apt -y install proftpd
+apt -y install bloodhound
+# bloodhound uses 'neo4j' database to operate 
+# to setup neo4j use ' neo4j console '
+# comment the following section to setup manually
+# echo -e "\n\n Remember to open the link and stup a password for neo4j"
+# neo4j console
+
+#may need to include in /etc/apt/sources.list
+# " deb http://http.kali.org/kali kali-rolling main contrib non-free "
+apt -y install python-pip
+apt -y install python3-pip
+
+# making directories for oscp labs
+mkdir -p ~/labs/pub ~/labs/vpn ~/tools/scripts ~/tools/enum
+cd ~/tools/enum/ && wget https://github.com/PowerShellMafia/PowerSploit/raw/master/Recon/PowerView.ps1 -O powerview.ps1
+cd
+cd ~/tools/scripts/
+wget https://github.com/clubcleaver/tools/raw/main/envset.sh -O envset
+chmod 777 envset
+cp envset /bin/
+wget https://github.com/clubcleaver/tools/raw/main/linum.sh -O linum
+chmod 777 linum
+cd
+
+## write result description:
+clear
+echo -e "\n\nInstalled the following on KALI: \n"
+echo -e "locate command\nGolang\ngcc libraries for 32bit compilations\nmousepad \nflameshot \nproftpd \nbloodhound \npython pip vesions 2 and 3 \n"
+echo -e "\n\nMade directories for tools, scripts and vpn"
+echo -e "\nfind:\nlinum in ~/tools/scripts/\npowerview in ~/tools/enum/"
+echo -e "\n commad:\nenvset was downloaded and copied to '/bin/' and is ready to use "
+
+
+#mkdir /ftpuser
+#groupadd ftpuser
+#useradd 

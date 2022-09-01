@@ -38,6 +38,9 @@ cp envset /bin/
 wget https://github.com/clubcleaver/tools/raw/main/linum.sh -O linum
 chmod 777 linum
 cd
+sudo cp /home/kali/tools/Invoke-Kerberoast.ps1 ~/tools/invoke-kerberoast.ps1
+cd ~/tools
+wget https://github.com/caday00/mimikatz2.1.1/archive/refs/heads/master.zip -O oldmimi.exe
 
 ## write result description:
 clear

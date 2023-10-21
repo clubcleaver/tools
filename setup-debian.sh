@@ -10,6 +10,7 @@ else
 
 	# Spinner Function
 	spinner() {
+		spin='-\|/'
 		pid=$!
 		i=0
 		while kill -0 $pid 2>/dev/null; do
@@ -48,19 +49,24 @@ else
 		wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub >linux_signing_key.pub
 		sudo install -D -o root -g root -m 644 linux_signing_key.pub /etc/apt/keyrings/linux_signing_key.pub
 		sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/linux_signing_key.pub] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-		sudo apt update -y 1>/dev/null &
+		sudo apt-get update -y 1>/dev/null &
 		spinner
 
 		# List of Packages to install
-		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python-pip" "python3-pip" "google-chrome-stable" "net-tools" "sshd")
+		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python3-pip" "google-chrome-stable" "net-tools" "sshd" "font-manager")
 		echo -e "Installing Packages: \n"
 
 		# Installing Package List including VS CODE.
-		spin='-\|/'
 
 		# Looping Over Array to install
 		for p in ${LIST[@]}; do
-			sudo apt-get install -y $p 1>/dev/null && echo -e "\nPackage ${p} Install Successfully\n" || echo -e "\nError: Error While Installing ${p}\n"
+			if [ $? -ne 0 ]
+			then
+				echo -e "\ninstalled ${LIST[$p-1]} Successfully"
+			else
+				echo -e "\nERROR: Could Not install the Package ${LIST[$p-1]}"
+			fi
+			sudo apt-get install -y $p 1>/dev/null 
 			spinner
 		done
 

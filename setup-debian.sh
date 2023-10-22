@@ -33,10 +33,9 @@ else
 
 		# Setting Up Debian Linux
 		echo -e "UPDATING APT: \n"
-		sudo apt-get update -y &
+		sudo apt-get update -y 1>/dev/nul &
 		spinner
-		sudo apt-get upgrade -y &
-		spinner
+		sudo apt-get upgrade -y
 
 		# Setting Up Microsoft Repo for VS Code.
 		sudo apt-get install wget gpg -y 1>/dev/null

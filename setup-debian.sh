@@ -53,27 +53,23 @@ else
 		spinner
 
 		# List of Packages to install
-		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python3-pip" "google-chrome-stable" "net-tools" "sshd" "font-manager")
+		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python3-pip" "google-chrome-stable" "net-tools" "openssh-client" "openssh-server" "font-manager")
 		echo -e "Installing Packages: \n"
 
 		# Installing Package List including VS CODE.
 
 		# Looping Over Array to install
-		for p in ${LIST[@]}; do
-			if [ $? -ne 0 ]
-			then
-				echo -e "\ninstalled ${LIST[$p-1]} Successfully"
-			else
-				echo -e "\nERROR: Could Not install the Package ${LIST[$p-1]}"
-			fi
-			sudo apt-get install -y $p 1>/dev/null 
+		for p in ${LIST[@]}; 
+		do
+			sudo apt-get install -y $p 1>/dev/null & 
 			spinner
+			if [ ${?} -eq 0 ]
+			then
+				echo -e "\ninstalled ${p} Successfully"
+			else
+				echo -e "\nERROR: Could Not install the Package ${p}"
+			fi
 		done
-
-		# Download Nerd Fonts
-		echo -e "Downloading Nerd Fonts\n"
-		wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/EnvyCodeR.zip -P $userHome/Downloads/. 1>/dev/null
-		wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hermit.zip -P $userHome/Downloads/. 1>/dev/null
 
 		echo -e "\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\nALL DONE !!!\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n"
 

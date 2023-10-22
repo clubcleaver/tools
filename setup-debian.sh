@@ -33,9 +33,9 @@ else
 
 		# Setting Up Debian Linux
 		echo -e "UPDATING APT: \n"
-		sudo apt-get update -y 1>/dev/null &
+		sudo apt-get update -y &
 		spinner
-		sudo apt-get upgrade -y 1>/dev/null &
+		sudo apt-get upgrade -y &
 		spinner
 
 		# Setting Up Microsoft Repo for VS Code.
@@ -70,8 +70,12 @@ else
 				echo -e "\nERROR: Could Not install the Package ${p}"
 			fi
 		done
-
-		echo -e "\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\nALL DONE !!!\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n"
+		# Setting Up ZSH Theme
+		touch $userHome/.zshrc
+		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $userHome/powerlevel10k
+		echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>$userHome/.zshrc
+		sudo rm -f $userHome/linux_signing_key.pub
+		echo -e "\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\nALL DONE !!!\nClose terminal and Open a New Window to Setup ZSH\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n"
 
 	}
 	main

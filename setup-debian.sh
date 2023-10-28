@@ -35,7 +35,7 @@ else
 		echo -e "UPDATING APT: \n"
 		sudo apt-get update -y 1>/dev/nul &
 		spinner
-		sudo apt-get -y upgrade -qq &
+		sudo apt-get -y upgrade
   		clear
     		echo -e "\nAPT UPGRADED"
 
@@ -46,7 +46,7 @@ else
 		sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 		sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 		rm -f packages.microsoft.gpg
-  		sudo apt-get update -qq &
+  		sudo apt-get update 1>/dev/null -y &
     		spinner
 
 		# List of Packages to install
@@ -67,11 +67,18 @@ else
 				echo -e "\nERROR: Could Not install the Package ${p}"
 			fi
 		done
+  		#Clean Up
+    		sudo apt-get autoremove -y && sudo apt-get autoclean -y
 		# Setting Up ZSH Theme
 		touch $userHome/.zshrc
 		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $userHome/powerlevel10k
 		echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>$userHome/.zshrc
 		sudo rm -f $userHome/linux_signing_key.pub
+  		clear
+		# Clean Up
+  		echo -e "\nInstalled Packages:"
+  		echo -e "\nPlocate, GCC Libraries, GOLANG, Flameshot, RCLONE, Terminator, NODE, Python3-PIP, NET-TOOLS, SSH-SERVER and Font Manager"
+  		echo -e "\nAPT UPGRADED AND CLEANED\n"
 		echo -e "\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\nALL DONE !!!\nClose terminal and Open a New Window to Setup ZSH\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n"
 
 	}

@@ -35,24 +35,22 @@ else
 		echo -e "UPDATING APT: \n"
 		sudo apt-get update -y 1>/dev/nul &
 		spinner
-		sudo apt-get upgrade -y
+		sudo apt-get -y upgrade -qq &
+  		clear
+    		echo -e "\nAPT UPGRADED"
 
 		# Setting Up Microsoft Repo for VS Code.
+  		echo -e "\nSetting Up Repo for VS-CODE"
 		sudo apt-get install wget gpg -y 1>/dev/null
 		wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg
 		sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 		sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 		rm -f packages.microsoft.gpg
-
-		# Setting Up Google Chrome Repos
-		wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub >linux_signing_key.pub
-		sudo install -D -o root -g root -m 644 linux_signing_key.pub /etc/apt/keyrings/linux_signing_key.pub
-		sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/linux_signing_key.pub] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-		sudo apt-get update -y 1>/dev/null &
-		spinner
+  		sudo apt-get update -qq &
+    		spinner
 
 		# List of Packages to install
-		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python3-pip" "google-chrome-stable" "net-tools" "openssh-client" "openssh-server" "font-manager")
+		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python3-pip" "net-tools" "openssh-client" "openssh-server" "font-manager")
 		echo -e "Installing Packages: \n"
 
 		# Installing Package List including VS CODE.

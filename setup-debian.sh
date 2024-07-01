@@ -50,7 +50,7 @@ else
     		spinner
 
 		# List of Packages to install
-		LIST=("plocate" "gcc-multilib" "golang-go" "flameshot" "rclone" "terminator" "nodejs" "npm" "code" "python3-pip" "net-tools" "openssh-client" "openssh-server" "font-manager")
+		LIST=("gcc-multilib" "golang-go" "code" "python3-pip" "net-tools" "openssh-client" "openssh-server" "font-manager" "tmux" "neovim" "tilda" "")
 		echo -e "Installing Packages: \n"
 
 		# Installing Package List including VS CODE.
@@ -77,7 +77,7 @@ else
   		clear
 		# Clean Up
   		echo -e "\nInstalled Packages:"
-  		echo -e "\nPlocate, GCC Libraries, GOLANG, Flameshot, RCLONE, Terminator, NODE, Python3-PIP, NET-TOOLS, SSH-SERVER and Font Manager"
+		echo ${LIST}
   		echo -e "\nAPT UPGRADED AND CLEANED\n"
 		echo -e "\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\nALL DONE !!!\nClose terminal and Open a New Window to Setup ZSH\n\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\n"
 
